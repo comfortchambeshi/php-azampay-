@@ -95,7 +95,7 @@ $(document).ready(function() {
         console.log(response);
         // Display the status
         if(response == 'pending') {
-          $('#status').html('<h4 class="text"><i class="bi bi-calendar-check-fill"></i> Transaction in progress... Do not leave this page!</h4>');
+          $('#status').html('<div class="text-center"><div class="spinner-border" role="status"> <span class="sr-only">Loading...</span> </div></div><h4 class="text-center">Transaction in progress...</h4>');
 
         } else if(response == 'approved') {
             // if status is approved, display message and redirect
@@ -103,9 +103,13 @@ $(document).ready(function() {
         setTimeout(function() {
           window.location.href = '../redirect.php?status=approved'; // replace with the URL you want to redirect to
         }, 5000);
-          w
+          
         } else if(response == 'rejected') {
-          window.location.replace('../redirect.php?status=failed');
+          $('#status').html('<h4 class="text-danger">Transaction failed!</h4>');
+          setTimeout(function() {
+          window.location.href = '../redirect.php?status=failed'; // replace with the URL you want to redirect to
+        }, 5000);
+          
         }
       }
     });
