@@ -97,7 +97,7 @@ $(document).ready(function() {
         if(response == 'pending') {
           $('#status').html('<div class="text-center"><div class="spinner-border" role="status"> <span class="sr-only">Loading...</span> </div></div><h4 class="text-center">Transaction in progress...</h4>');
 
-        } else if(response == 'approved') {
+        } else if(response == 'success') {
             // if status is approved, display message and redirect
         $('#status').html('<h4 class="text-success">Transaction processed successfully!</h4>');
         setTimeout(function() {
