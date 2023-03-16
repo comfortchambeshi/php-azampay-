@@ -52,7 +52,7 @@ $main = new main();
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:300,400,500">
      <title>Payment submit</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway+Dots">
@@ -64,15 +64,60 @@ $main = new main();
     <link rel="stylesheet" href="../assets/css/Navigation-Clean.css">
     <link rel="stylesheet" href="../assets/css/News-article-for-homepage-by-Ikbendiederiknl.css">
     <link rel="stylesheet" href="../assets/css/styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
 </head>
 
 <body>
 
-      <div class="news-block" style="padding-top: 0px;">
+<div class="news-block" style="padding-top: 0px;">
         <section class="login-clean">
-            <form  action="inc/submit.inc.php" method="post" style="max-width: 100%;">
-              <h3 class="text-center"><?php echo $display;?></h3>
-            </form></section></div>
+            <form id="content" action="" method="post" style="width: 500px;max-width: 100%;" >
+
+             <h3 id="status"></h3>
+            </form>
+        </section>
+    </div>
+
+      
+<script>
+$(document).ready(function() {
+  // Function to check the status
+  function checkStatus() {
+    // Get the transaction ID from the HTML form
+    var transaction_id = $('#transaction-id').val();
+    
+    // Send an AJAX request to the PHP file
+    $.ajax({
+      url: 'check.php?txn=<?php echo $pay[1]; ?>',
+      type: 'POST',
+      data: { transaction_id: transaction_id },
+      success: function(response) {
+        console.log(response);
+        // Display the status
+        if(response == 'pending') {
+          $('#status').html('<h4 class="text-info"><i class="bi bi-calendar-check-fill"></i> Transaction in progress... Do not leave this page!</h4>');
+
+        } else if(response == 'approved') {
+            // if status is approved, display message and redirect
+        $('#status').html('<h4 class="text-success">Transaction processed successfully!</h4>');
+        setTimeout(function() {
+          window.location.href = '../redirect.php?status=approved'; // replace with the URL you want to redirect to
+        }, 5000);
+          w
+        } else if(response == 'rejected') {
+          window.location.replace('../redirect.php?status=failed');
+        }
+      }
+    });
+  }
+  
+  // Check the status every 3 seconds
+  setInterval(checkStatus, 3000);
+});
+</script>
+
+<div id="status"></div>
+
 
 
 

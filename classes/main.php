@@ -363,22 +363,7 @@ public function editEvent($name, $description, $id){
         
 
     
-    }
-
-
-//Insert donation
-    public function insertMemberRequest($first_name, $last_name, $gender, $email, $message, $request, $phone_number, $city_town, $province, $address, $current_church, $new_church){
-
-        $nowtime = date('Y-m-d H:i:s');
-
-        $sql = "INSERT INTO member_request(first_name, last_name, gender, email, message, request, phone_number, city_town, province, address, current_church, new_church) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
-
-        $stmt = $this->connect()->prepare($sql);
-        if(!$stmt->execute([$first_name, $last_name,$gender,  $email, $message, $request, $phone_number, $city_town, $province, $address, $current_church, $new_church])){
-
-            print_r($stmt->errorInfo());
-
-        }
+    
         
 
     
