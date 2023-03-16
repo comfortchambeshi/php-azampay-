@@ -4,9 +4,9 @@ class azampay
 
 {   //Options are sandbox and production
   private static $environment = "sandbox";
-	private static $appName = "Witlevels";
-	private static $clientId = "51bb0d77-c007-4eb4-b181-542b73c41124";
-	private static $clientSecret = "IJtnxdiR5qN91qZVoJh46/R4DdV+p/A6L76uphFWnbwIEUvoKYpQNy7aobH6T05jQJX48GDAo16uPbEfequaugCp+w1fXyMMINxaiMNwmM0v1n0pWiqkjD+doW+UzSGyGB+42PnT2pnK743xXCBb8loCMJuqZtYtC0nbiGN1zW+1Fhh8Y+Q+g8j4Uh9tPfDUz12eqjo4TLtd2Xnc6FnonvsgQpDOEBpVPhoX3htY3Ijj/3E/87YPNPDEhA4ZE4aMWPxiwwzqyq5eRjitfut5C2mbQnSIfa2mvHat2j2G4ljZ2pOClIrW5G/1/0dZc/QHUFLceanrPBuHsox+cq8CcPflZxWg8pPWuqCqM6OhujJ8AIQqs8hyV20tB0Y8N5RQXIT1h1CgwpA1HF55NyCq3C1zYKamLNWtvehHsdLlCAMP0M8v9nZrRi/Q/Y4/RdFYJOzKb9K2Sx3wG5Ocgcjb+FRLcLHuQ1QIh5Ec3OHzfi4coPuGz0qeNfxABV3tkglBxZLvrtXJKZsZpZql5mL7InZprxNY9Zp4my8qvvtTOP2ILxFdWl33nmaXm5RZfsAatABKjdV9XhHhj0GiZi/5Q11hgUbmk1w/YiS+EB+Tz8eASjkxL9rAcNoVBIM8G+KnOj/ptqEL/doijJZ885HL4YUGutIfHU8PtrBmf47qkSk=";
+	private static $appName = "app_name";
+	private static $clientId = "client_id";
+	private static $clientSecret = "client_secrete";
 
 	//Environment URLS
 	public static function envUrls()

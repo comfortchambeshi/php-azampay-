@@ -5,7 +5,7 @@ class db{
 private $dbname = "azampay";
 private $dbhost = "localhost";
 private $dbuser = "root";
-private $dbpwd = "nnnnnnnn";
+private $dbpwd = "";
 
 protected function connect(){
 
