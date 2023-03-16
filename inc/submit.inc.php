@@ -95,7 +95,7 @@ $(document).ready(function() {
         console.log(response);
         // Display the status
         if(response == 'pending') {
-          $('#status').html('<h4 class="text-info"><i class="bi bi-calendar-check-fill"></i> Transaction in progress... Do not leave this page!</h4>');
+          $('#status').html('<h4 class="text"><i class="bi bi-calendar-check-fill"></i> Transaction in progress... Do not leave this page!</h4>');
 
         } else if(response == 'approved') {
             // if status is approved, display message and redirect
