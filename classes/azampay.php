@@ -59,9 +59,8 @@ class azampay
 	}
 
 	//MNO checkout
-	public static function mnocheckout($accountNumber, $amount,  $currency,$provider)
-	{         //UUID ID generator
-             $externalId = vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex(random_bytes(16)), 4));
+	public static function mnocheckout($accountNumber, $amount,  $currency,$provider,  $externalId)
+	{         
 		      $curl = curl_init();
               curl_setopt_array($curl, array(
                 CURLOPT_URL => ''.AzamPay::envUrls()["checkout_url"].'/azampay/mno/checkout',
