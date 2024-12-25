@@ -6,6 +6,9 @@ include '../classes/db.php';
 include '../classes/main.php';
 include '../classes/azampay.php';
 
+//Generate unique external id
+//UUID ID generator
+$externalId = vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex(random_bytes(16)), 4));
 
 //Call AzamPay
 
@@ -28,14 +31,16 @@ $main = new main();
   $display = "";
   if ($payment_method == "Airtel" || $payment_method == "Tigo" || $payment_method == "Halopesa") {
 
+   //Insert transaction into table
+  $insert = $main->insertTransaction($first_name, $last_name, 'Product title here', $amount, "TZS", $externalId, $externalId, $payment_method, $email);
     //Choose from these providers for MNO "Airtel" "Tigo" "Halopesa" "Azampesa"
-  $pay = $azampay->mnocheckout($acc_id,  $amount, 'TZS', $payment_method);
+  $pay = $azampay->mnocheckout($acc_id,  $amount, 'TZS', $payment_method, $externalId);
+  
 
   //Display
   $display =  $pay[0]->message;
 
-      //Insert transaction into table
-    $insert = $main->insertTransaction($first_name, $last_name, 'Product title here', $amount, "TZS", $pay[1], $pay[1], $payment_method, $email);
+     
     //header("Location: ".$pay[0]->paymentUrl."");
   }
 
@@ -88,7 +93,7 @@ $(document).ready(function() {
     
     // Send an AJAX request to the PHP file
     $.ajax({
-      url: 'check.php?txn=<?php echo $pay[1]; ?>',
+      url: 'check.php?txn=<?php echo $externalId; ?>',
       type: 'POST',
       data: { transaction_id: transaction_id },
       success: function(response) {
